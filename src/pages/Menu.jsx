@@ -12,7 +12,9 @@ function Menu() {
   return (
     <div className="menu-app">
       <h1 className="menu-title">Manga Editor</h1>
-      <button className="menu-btn">New Project</button>
+      <button className="menu-btn" onClick={() => navigate("/new-project")}>
+        New Project
+      </button>
       <button className="menu-btn" onClick={() => handleNewProject()}>
         Open a project
       </button>
