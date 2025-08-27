@@ -4,7 +4,7 @@ import "../css/ProjectView.css";
 
 function ProjectView() {
   const { id } = useParams();
-  const [projects] = useState(["Project A", "Project B", "Project C"]);
+  const [chapters] = useState(["Chapter 1", "Chapter 2", "Chapter 3"]);
   const [selectedProject, setSelectedProject] = useState(null);
 
   const navigation = useNavigate();
@@ -17,8 +17,8 @@ function ProjectView() {
   return (
     <div className="project-app">
       <div className="project-sidebar">
-        <h3>Projects</h3>
-        {projects.map((project, index) => (
+        <h3>Chapters</h3>
+        {chapters.map((project, index) => (
           <button
             key={index}
             className={`project-sidebar-btn btn-hover ${
