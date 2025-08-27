@@ -1,5 +1,6 @@
 const path = require("path");
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { createProject } = require("./backend/createProject.cjs");
 
 if (process.env.NODE_ENV !== "production") {
   require("electron-reload")(path.join(__dirname, ".."), {
@@ -15,7 +16,7 @@ app.on("ready", () => {
     width: 1200,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.cjs"),
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -29,6 +30,11 @@ app.on("ready", () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));
   }
+});
+
+ipcMain.handle("create-project", async (_event, projectName) => {
+  const result = await createProject(projectName);
+  return result;
 });
 
 app.on("window-all-closed", () => {
