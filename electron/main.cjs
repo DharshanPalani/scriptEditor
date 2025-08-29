@@ -2,6 +2,7 @@ const path = require("path");
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const { createProject } = require("./backend/createProject.cjs");
 const { initApplication } = require("./backend/initApplication.cjs");
+const { createChapter } = require("./backend/createChapter.cjs");
 
 if (process.env.NODE_ENV !== "production") {
   require("electron-reload")(path.join(__dirname, ".."), {
@@ -42,6 +43,14 @@ ipcMain.handle("init-application", (_event) => {
   const result = initApplication();
   return result;
 });
+
+ipcMain.handle(
+  "create-chapter",
+  async (_event, projectID, projectDir, chapterIndex) => {
+    const result = createChapter(projectID, projectDir, chapterIndex);
+    return result;
+  }
+);
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();

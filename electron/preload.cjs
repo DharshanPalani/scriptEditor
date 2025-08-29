@@ -12,4 +12,9 @@ contextBridge.exposeInMainWorld("api", {
     console.log("[Preload] Sending IPC init-application");
     return ipcRenderer.invoke("init-application");
   },
+
+  createChapter: () => {
+    console.log("[Preload] Sending IPC create-chapter");
+    return ipcRenderer.invoke("create-chapter");
+  },
 });
