@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/ProjectView.css";
+import useCreateChapter from "../hooks/useCreateChapter";
 
 function ProjectView() {
   const { id } = useParams();
@@ -9,9 +10,15 @@ function ProjectView() {
 
   const navigation = useNavigate();
 
+  const { createChapter } = useCreateChapter();
+
   const handleDoubleClick = (project) => {
     // console.log("Double clicked:", project);
     navigation("/editor");
+  };
+
+  const handleCreateChapter = () => {
+    // To add shits
   };
 
   return (
@@ -34,7 +41,11 @@ function ProjectView() {
 
       <div className="project-main">
         <div className="top-pane">Top daw</div>
-        <div className="bottom-pane">Bottom daw</div>
+        <div className="bottom-pane">
+          <button onClick={() => {}} className="chapter-create-button">
+            Create new chapter
+          </button>
+        </div>
       </div>
     </div>
   );
