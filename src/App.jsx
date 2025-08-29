@@ -3,8 +3,15 @@ import EditorView from "./pages/EditorView.jsx";
 import Menu from "./pages/Menu.jsx";
 import ProjectView from "./pages/ProjectView.jsx";
 import NewProjectView from "./pages/NewProjectView.jsx";
+import { useEffect } from "react";
+import useInitApplication from "./hooks/useInitApplication.js";
 
 function App() {
+  const { initApplication } = useInitApplication();
+
+  useEffect(() => {
+    initApplication();
+  }, []);
   return (
     <HashRouter>
       <Routes>

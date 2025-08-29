@@ -7,4 +7,9 @@ contextBridge.exposeInMainWorld("api", {
     console.log("[Preload] Sending IPC create-project:", name);
     return ipcRenderer.invoke("create-project", name);
   },
+
+  initApplication: () => {
+    console.log("[Preload] Sending IPC init-application");
+    return ipcRenderer.invoke("init-application");
+  },
 });

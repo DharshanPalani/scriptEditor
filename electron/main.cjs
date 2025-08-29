@@ -1,6 +1,7 @@
 const path = require("path");
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const { createProject } = require("./backend/createProject.cjs");
+const { initApplication } = require("./backend/initApplication.cjs");
 
 if (process.env.NODE_ENV !== "production") {
   require("electron-reload")(path.join(__dirname, ".."), {
@@ -34,6 +35,11 @@ app.on("ready", () => {
 
 ipcMain.handle("create-project", async (_event, projectName) => {
   const result = await createProject(projectName);
+  return result;
+});
+
+ipcMain.handle("init-application", (_event) => {
+  const result = initApplication();
   return result;
 });
 
