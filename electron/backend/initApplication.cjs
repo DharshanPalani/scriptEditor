@@ -27,6 +27,14 @@ const initApplication = async () => {
     `
     ).run();
 
+    db.prepare(
+      `CREATE TABLE IF NOT EXISTS chapters (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id INTEGER,
+      dir TEXT
+      created_at TEXT)`
+    ).run();
+
     return true;
   } catch (error) {
     console.error("[InitApplication] Error:", error);
