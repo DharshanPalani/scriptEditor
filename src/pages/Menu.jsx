@@ -6,7 +6,7 @@ function Menu() {
   const navigate = useNavigate();
 
   const handleNewProject = () => {
-    navigate("/project/1234");
+    navigate("/project/1");
   };
 
   return (

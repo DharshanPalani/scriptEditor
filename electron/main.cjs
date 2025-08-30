@@ -3,6 +3,7 @@ const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const { createProject } = require("./backend/createProject.cjs");
 const { initApplication } = require("./backend/initApplication.cjs");
 const { createChapter } = require("./backend/createChapter.cjs");
+const { fetchProjectData } = require("./backend/fetchProjectData.cjs");
 
 if (process.env.NODE_ENV !== "production") {
   require("electron-reload")(path.join(__dirname, ".."), {
@@ -51,6 +52,12 @@ ipcMain.handle(
     return result;
   }
 );
+
+ipcMain.handle("fetch-project-data", async (_event, id) => {
+  const result = await fetchProjectData(id);
+  // console.log("Main result for fetching, " + result);
+  return result;
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
