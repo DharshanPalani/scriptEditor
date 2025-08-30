@@ -22,4 +22,8 @@ contextBridge.exposeInMainWorld("api", {
     console.log("[Preload] Sending IPC fetch-project-data", id);
     return ipcRenderer.invoke("fetch-project-data", id);
   },
+  fetchExistingProjects: () => {
+    console.log("[Preload] Sending IPC fetching-existing-projects");
+    return ipcRenderer.invoke("fetch-existing-projects");
+  },
 });

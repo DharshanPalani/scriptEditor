@@ -1,13 +1,9 @@
-import React from "react";
 import "../css/Menu.css";
 import { useNavigate } from "react-router-dom";
 
 function Menu() {
   const navigate = useNavigate();
-
-  const handleNewProject = () => {
-    navigate("/project/1");
-  };
+  // const handleNewProject = async () => {};
 
   return (
     <div className="menu-app">
@@ -15,7 +11,7 @@ function Menu() {
       <button className="menu-btn" onClick={() => navigate("/new-project")}>
         New Project
       </button>
-      <button className="menu-btn" onClick={() => handleNewProject()}>
+      <button className="menu-btn" onClick={() => navigate("/open-project")}>
         Open a project
       </button>
     </div>

@@ -4,6 +4,9 @@ const { createProject } = require("./backend/createProject.cjs");
 const { initApplication } = require("./backend/initApplication.cjs");
 const { createChapter } = require("./backend/createChapter.cjs");
 const { fetchProjectData } = require("./backend/fetchProjectData.cjs");
+const {
+  fetchExistingProjects,
+} = require("./backend/fetchExistingProjects.cjs");
 
 if (process.env.NODE_ENV !== "production") {
   require("electron-reload")(path.join(__dirname, ".."), {
@@ -56,6 +59,12 @@ ipcMain.handle(
 ipcMain.handle("fetch-project-data", async (_event, id) => {
   const result = await fetchProjectData(id);
   // console.log("Main result for fetching, " + result);
+  return result;
+});
+
+ipcMain.handle("fetch-existing-projects", async (_event) => {
+  const result = await fetchExistingProjects();
+  console.log("Main result for fetching " + result);
   return result;
 });
 

@@ -5,6 +5,7 @@ import ProjectView from "./pages/ProjectView.jsx";
 import NewProjectView from "./pages/NewProjectView.jsx";
 import { useEffect } from "react";
 import useInitApplication from "./hooks/useInitApplication.js";
+import OpenProjectView from "./pages/OpenProjectView.jsx";
 
 function App() {
   const { initApplication } = useInitApplication();
@@ -19,6 +20,7 @@ function App() {
         <Route path={"/project/:id"} element={<ProjectView />} />
         <Route path="/editor" element={<EditorView />} />
         <Route path="/new-project" element={<NewProjectView />} />
+        <Route path="/open-project" element={<OpenProjectView />} />
       </Routes>
     </HashRouter>
   );
