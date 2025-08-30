@@ -15,10 +15,12 @@ function NewProjectView() {
     }
 
     try {
-      const folderPath = await createProject(projectName);
-      alert(folderPath);
+      const result = await createProject(projectName);
+      alert(result.id);
 
-      navigate("/project/1");
+      const navPath = "/project/" + result.id;
+
+      navigate(navPath);
     } catch (err) {
       alert("Failed to create project.");
     }

@@ -16,9 +16,18 @@ const createProject = async (projectName) => {
       `INSERT INTO projects (name, dir, created_at) VALUES(?, ?, ?)`
     );
 
-    newProject.run(projectName, projectDir, new Date().toISOString());
+    const result = newProject.run(
+      projectName,
+      projectDir,
+      new Date().toISOString()
+    );
 
-    return projectDir;
+    console.log("New project ID: " + result.lastInsertRowid);
+
+    return {
+      id: result.lastInsertRowid,
+      dir: projectDir,
+    };
   } catch (err) {
     console.error("[Backend] Error creating project:", err);
     throw err;
