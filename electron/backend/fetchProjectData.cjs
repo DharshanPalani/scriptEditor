@@ -10,7 +10,8 @@ const fetchProjectData = async (id) => {
 
     // console.log("Project data query, " + JSON.stringify(projectData, null, 2));
 
-    return JSON.stringify(projectData, null, 2);
+    // return JSON.stringify(projectData, null, 2);
+    return projectData;
     // return projectData;
   } catch (error) {
     console.error(error);

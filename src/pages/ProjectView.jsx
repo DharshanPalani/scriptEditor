@@ -20,18 +20,20 @@ function ProjectView() {
 
     async function loadData() {
       try {
-        const result = await fetchProjectData(1);
+        const result = await fetchProjectData(Number(id));
         if (isMounted) {
+          // console.log("Type of result:", typeof result);
+          // console.log("Result value:", result);
           setData(result);
-          alert(result);
-          console.log(result);
         }
       } catch (error) {
         console.error("Failed to fetch project data:", error);
       }
     }
 
-    loadData();
+    if (id) {
+      loadData();
+    }
 
     return () => {
       isMounted = false;
@@ -48,6 +50,10 @@ function ProjectView() {
   const handleCreateChapter = () => {
     // To add shits
   };
+
+  if (!data) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="project-app">
@@ -68,7 +74,9 @@ function ProjectView() {
       </div>
 
       <div className="project-main">
-        <div className="top-pane">{data.name}</div>
+        <div className="top-pane">
+          <h1>{data.name}</h1>
+        </div>
         <div className="bottom-pane">
           <button onClick={() => {}} className="chapter-create-button">
             Create new chapter
