@@ -59,7 +59,7 @@ function ProjectView() {
     <div className="project-app">
       <div className="project-sidebar">
         <h3>Chapters</h3>
-        {chapters.map((project, index) => (
+        {/* {chapters.map((project, index) => (
           <button
             key={index}
             className={`project-sidebar-btn btn-hover ${
@@ -70,7 +70,7 @@ function ProjectView() {
           >
             {project}
           </button>
-        ))}
+        ))} */}
       </div>
 
       <div className="project-main">
