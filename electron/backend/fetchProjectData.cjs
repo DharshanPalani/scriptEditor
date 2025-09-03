@@ -18,19 +18,12 @@ const fetchProjectData = async (id) => {
       )
       .get(id);
 
-    // console.log("Project data query, " + JSON.stringify(projectData, null, 2));
-
-    // return JSON.stringify(projectData, null, 2);
-
     projectData.lastChapterIndex = lastChapter ? lastChapter.id : 0;
 
     return projectData;
-    // return projectData;
   } catch (error) {
     console.error(error);
   }
 };
 
 module.exports = { fetchProjectData };
-
-// fetchProjectData(1);
