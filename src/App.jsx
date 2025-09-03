@@ -33,7 +33,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Menu />} />
       <Route path={"/project/:id"} element={<ProjectView />} />
-      <Route path="/editor" element={<EditorView />} />
+      <Route path="/editor/:chapter_id" element={<EditorView />} />
       <Route path="/new-project" element={<NewProjectView />} />
       <Route path="/open-project" element={<OpenProjectView />} />
     </Routes>

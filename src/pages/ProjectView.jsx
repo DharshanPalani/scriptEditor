@@ -37,7 +37,9 @@ function ProjectView() {
   }, [id, fetchProjectData]);
 
   const handleDoubleClick = (chapter) => {
-    navigation("/editor", { state: { chapter } });
+    const chapter_id = chapter.split("_")[1];
+    alert(chapter_id);
+    navigation("/editor/" + chapter_id);
   };
 
   const handleCreateChapter = async () => {
