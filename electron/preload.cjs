@@ -13,9 +13,9 @@ contextBridge.exposeInMainWorld("api", {
     return ipcRenderer.invoke("init-application");
   },
 
-  createChapter: () => {
+  createChapter: (projectID) => {
     console.log("[Preload] Sending IPC create-chapter");
-    return ipcRenderer.invoke("create-chapter");
+    return ipcRenderer.invoke("create-chapter", projectID);
   },
 
   fetchProjectData: (id) => {

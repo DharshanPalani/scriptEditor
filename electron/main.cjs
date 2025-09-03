@@ -48,13 +48,10 @@ ipcMain.handle("init-application", (_event) => {
   return result;
 });
 
-ipcMain.handle(
-  "create-chapter",
-  async (_event, projectID, projectDir, chapterIndex) => {
-    const result = createChapter(projectID, projectDir, chapterIndex);
-    return result;
-  }
-);
+ipcMain.handle("create-chapter", async (_event, projectID) => {
+  const result = createChapter(projectID);
+  return result;
+});
 
 ipcMain.handle("fetch-project-data", async (_event, id) => {
   const result = await fetchProjectData(id);

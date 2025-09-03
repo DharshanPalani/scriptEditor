@@ -15,6 +15,8 @@ function ProjectView() {
 
   const navigation = useNavigate();
 
+  const { createChapter } = useCreateChapter();
+
   useEffect(() => {
     let isMounted = true;
 
@@ -39,8 +41,6 @@ function ProjectView() {
       isMounted = false;
     };
   }, [id, fetchProjectData]);
-
-  const { createChapter } = useCreateChapter();
 
   const handleDoubleClick = (project) => {
     // console.log("Double clicked:", project);
@@ -78,7 +78,12 @@ function ProjectView() {
           <h1>{data.name}</h1>
         </div>
         <div className="bottom-pane">
-          <button onClick={() => {}} className="chapter-create-button">
+          <button
+            onClick={() => {
+              createChapter(id);
+            }}
+            className="chapter-create-button"
+          >
             Create new chapter
           </button>
         </div>
